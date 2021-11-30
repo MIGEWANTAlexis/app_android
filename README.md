@@ -10,13 +10,13 @@ Nous n'avons pas suivi d'architecture spéciale pour ce projet, nous avons simpl
 
 ## Interface Homme Machine
 
-![Untitled Diagram.drawio.png](readme_lib/Untitled_Diagram.drawio.png)
+![Java_IHM.png](readme_lib/Java_IHM.png)
 
 ## Programme Java
 
 ### Déroulement
 
-![Java process.png](readme_lib/Java_process.png)
+![Java_process.png](readme_lib/Java_process.png)
 
 Ce schéma présente le fonctionnement de notre application Android. Résumé du déroulement dans un cas sans problème :
 
@@ -36,7 +36,7 @@ Ce schéma présente le fonctionnement de notre application Android. Résumé du
     2. Reçoit les données dans l'ordre d'affichage demandé 
     
 
-![Capture d’écran 2021-11-30 à 16.25.27.png](readme_lib/Capture_decran_2021-11-30_a_16.25.27.png)
+![IHM.png](readme_lib/IHM.png)
 
 ### Conception
 
