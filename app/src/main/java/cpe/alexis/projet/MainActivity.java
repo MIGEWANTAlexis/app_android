@@ -116,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    text_message.setText("Test");
                     String input_text_address = String.valueOf(input_ip.getText());
                     String input_text_port = String.valueOf(input_port.getText());
                     if(is_ipv4_valid(input_text_address) && is_port_valid(input_text_port)) {
@@ -124,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
                         port = Integer.parseInt(input_text_port);
                         button_temperature_luminosity.setEnabled(true);
                         button_luminosity_temperature.setEnabled(true);
+                        text_message.setText("Connection success!");
                     } else {
                         text_message.setText("PLEASE CHECK YOUR IP AND PORT");
                     }
@@ -192,9 +192,9 @@ public class MainActivity extends AppCompatActivity {
                     String displayed_message = "";
                     String lum = messages[0];
                     String temp = messages[1];
-                    displayed_message = "Luminosity " + lum + " Temperature " + temp;
+                    displayed_message = "Luminosity" + lum + " Temperature" + temp;
                     if(display_direction_configuration == "TL") {
-                        displayed_message = "Temperature " + temp + " Luminosity " + lum;
+                        displayed_message = "Temperature" + temp + " Luminosity" + lum;
                     }
                     text_message.setText(displayed_message);
                 }
