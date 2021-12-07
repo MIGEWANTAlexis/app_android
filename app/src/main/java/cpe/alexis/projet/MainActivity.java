@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private String display_direction_configuration;
     private ReceiverTask receiverTask;
     private Encryption encryption = new Encryption(3);
-    private static final String IPV4_PATTERN = "^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\\.(?!$)|$)){4}$"; // MODIF A TESTER 2
-    private static final String PORT_PATTERN = "^[0-9]*$"; // MODIF A TESTER 3
+    private static final String IPV4_PATTERN = "^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\\.(?!$)|$)){4}$";
+    private static final String PORT_PATTERN = "^[0-9]*$";
 
     /************* application functions *************/
 
@@ -74,17 +74,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void get_values() {
-        String encrypted_message = encryption.encrypt("getValues()"); // MODIF A TESTER 1
+        String encrypted_message = encryption.encrypt("getValues()");
         send_udp_packet(encrypted_message);
     }
 
-    private boolean is_ipv4_valid(String ipv4) { // MODIF A TESTER 3
+    private boolean is_ipv4_valid(String ipv4) {
         Pattern pattern = Pattern.compile(IPV4_PATTERN);
         Matcher matcher = pattern.matcher(ipv4);
         return matcher.matches();
     }
 
-    private boolean is_port_valid(String port) { // MODIF A TESTER 3
+    private boolean is_port_valid(String port) {
         Pattern pattern = Pattern.compile(PORT_PATTERN);
         Matcher matcher = pattern.matcher(port);
         return matcher.matches();
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 display_direction_configuration = "TL";
-                get_values(); // MODIF A TESTER 1
+                get_values();
                 send_udp_packet(encryption.encrypt(display_direction_configuration));
             }
         });
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 display_direction_configuration = "LT";
-                get_values(); // MODIF A TESTER 1
+                get_values();
                 send_udp_packet(encryption.encrypt(display_direction_configuration));
             }
         });
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                     if(udp_socket != null) {
                         udp_socket.receive(packet);
                         String udp_message_received = new String(packet.getData(), 0, packet.getLength());
-                        String decrypted_message = encryption.decrypt(udp_message_received); // MODIF A TESTER 1
+                        String decrypted_message = encryption.decrypt(udp_message_received);
                         String[] splited_message = decrypted_message.split(",");
                         String[] temperatures_luminosities = {splited_message[0].split("l")[1], splited_message[1].split("t")[1]};
                         onProgressUpdate(temperatures_luminosities); // format : l:60,t:30
@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
     /*
      * subclass to encrypt data
      */
-    private class Encryption { // MODIF A TESTER 1
+    private class Encryption {
         private int shiftPattern;
 
         protected Encryption(int shiftPattern) {
